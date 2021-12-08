@@ -1,0 +1,44 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container ">
+    <div class="container">
+        <img src="{% static 'portfolio/wind.jpg' %}" alt="" class="rounded mx-auto d-block">
+    </div>
+    
+    <div class="container parisienne_fonts">
+        <p class="text-sm-start text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel accumsan nisl. Aenean et feugiat orci, auctor consequat purus. Vestibulum rutrum mi eu augue lacinia, sed tristique nisl dictum. Curabitur tincidunt mollis ullamcorper. Proin venenatis sed ante eget laoreet. Pellentesque nec purus nibh. Curabitur ante nibh, lacinia ac nibh eget, lacinia sodales lacus. Quisque tempor nisi et ultrices imperdiet. Pellentesque maximus quam quis pulvinar aliquet. Pellentesque vel malesuada eros. Praesent faucibus tortor a urna ultrices ornare. Donec nec nisl nec leo mattis sollicitudin. Aenean ac gravida augue, ut suscipit orci. Maecenas mattis dolor ante.
+        </p>
+    </div>
+    
+    <div class="container parisienne_fonts">
+        <h1>{{ title }}</h1>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for project in projects %}
+            <div class="col">
+                <div class="card border-light" style="max-width: 30rem;">
+                    {% if project.url %}
+                        <a href="{{ project.url }}" target="_blank">
+                            <img src="{{ project.image.url }}" class="card-img-top img-fluid-md" alt="..."
+                                style="height: 15rem;">
+                        </a>
+                    {% else %}
+                        <img src="{{ project.image.url }}" class="card-img-top img-fluid-md" alt="..."
+                            style="height: 15rem;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
